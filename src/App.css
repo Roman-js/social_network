@@ -6,3 +6,8 @@
 
 }
 
+.content_wrapper {
+    grid-area: c;
+    background: rebeccapurple;
+}
+

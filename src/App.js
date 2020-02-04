@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./Components/Header/Header";
+import NavBar from "./Components/NavBar/NavBar";
+import Profile from "./Components/Profile/Profile";
+import Dialogs from "./Components/Dialogs/Dialogs";
+import {BrowserRouter, Route} from "react-router-dom";
+import PropTypes from 'prop-types';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+    render = () => {
+
+        return (
+            <BrowserRouter>
+                <div className='app_wrapper'>
+                    <Header/>
+                    <NavBar/>
+                    <div className='content_wrapper'>
+
+                        <Route path='/profile' render={() => <Profile state={this.props.state.profilePage}
+                                                                      stateCommon={this.props.state.commonElements}
+                                                                      addPost={this.props.addPost}
+                                                                      updatePost={this.props.updatePost}/>}/>
+                        <Route path='/dialogs' render={() => <Dialogs state={this.props.state.dialogsPage}
+                                                                      stateCommon={this.props.state.commonElements}
+                                                                      addDialog={this.props.addDialog}
+                                                                      updateComment={this.props.updateComment}/>}/>
+                        {/*<Route path='/news' component={Profile} />*/}
+                        {/*<Route path='/music' component={Profile}/>*/}
+                        {/*<Route path='/settings' component={Profile}/>*/}
+                    </div>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;
+App.propTypes = {
+    App: PropTypes.number
+};

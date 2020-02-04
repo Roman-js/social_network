@@ -1,0 +1,16 @@
+
+
+.name a {
+    color: white;
+    text-decoration: none;
+}
+.links a.active{
+    color: black;
+}
+.dialogItems .active {
+    color: gold;}
+
+.avatar img {
+    width: 50px;
+    height: 70px;
+}
