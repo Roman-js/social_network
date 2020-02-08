@@ -10,16 +10,16 @@ const MyPosts = (props) => {
                                                       avatar={props.stateCommon[0]}/>);
 
 
-    let message = React.createRef();
-    let addPost = () => {
-        let text = message.current.value;
+
+    let addPost = (e) => {
+        let text = e.currentTarget.value;
         props.addPost(text);
     };
 
-    let updatePost = () =>{
-        let text = message.current.value;
+    let updatePost = (e) =>{
+        let text = e.currentTarget.value;
         props.updatePost(text);
-    }
+    };
 
 
     return (
@@ -28,7 +28,7 @@ const MyPosts = (props) => {
             <h3>New Post</h3>
             <div>
                 <div>
-                    <textarea onChange={updatePost} ref={message}></textarea>
+                    <textarea onChange={updatePost} ></textarea>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

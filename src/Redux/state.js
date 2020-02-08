@@ -1,5 +1,9 @@
 import React from "react";
-import {rerenderEntireTree} from "../Render";
+
+
+let rerenderEntireTree = () =>{
+    console.log('State changed')
+}
 
 const State = () => {}
 let state = {
@@ -60,6 +64,9 @@ export let updatePost =(currentPost) =>{
     rerenderEntireTree(state);
 }
 
+export const subscribe =(observer) =>{
+    rerenderEntireTree=observer
+}
 
 
 
