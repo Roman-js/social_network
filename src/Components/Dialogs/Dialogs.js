@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const Dialogs = (props) => {
 
-
+//debugger;
     let nameElements = props.state.names.map(name =>
         <DialogItem name={name.name} id={name.id} avatar={props.stateCommon.avatars[0]}/>)
     let messageElements = props.state.messages.map(

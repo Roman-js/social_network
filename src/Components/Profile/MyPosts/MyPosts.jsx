@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 const MyPosts = (props) => {
-
+//debugger;
     let postElements = props.state.map(state => <Post message={state.message} likes={state.likes}
                                                       avatar={props.stateCommon[0]}/>);
 

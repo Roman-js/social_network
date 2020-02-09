@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 
 const DialogItem = (props) => {
+
     return (
         <div>
 

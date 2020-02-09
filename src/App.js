@@ -11,14 +11,13 @@ import PropTypes from 'prop-types';
 class App extends React.Component {
 
     render = () => {
-
+        //debugger;
         return (
             <BrowserRouter>
                 <div className='app_wrapper'>
                     <Header/>
                     <NavBar/>
                     <div className='content_wrapper'>
-
                         <Route path='/profile' render={() => <Profile state={this.props.state.profilePage}
                                                                       stateCommon={this.props.state.commonElements}
                                                                       addPost={this.props.addPost}

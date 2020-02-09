@@ -6,8 +6,7 @@ import PropTypes from "prop-types";
 
 
 const Profile = (props) => {
-
-
+//debugger;
     return (
 
         <div className={classes.profileItems}>
