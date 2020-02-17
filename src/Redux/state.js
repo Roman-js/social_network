@@ -1,6 +1,6 @@
 import React from "react";
 import profileReducer from "./profile-reducer";
-import dialogReducer from "./dialogs-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 
 let store = {
@@ -51,7 +51,7 @@ let store = {
     dispatch(action){
 
         this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this.rerenderEntireTree(this._state);
 
     //      if(action.type === 'ADD-DIALOG'){
@@ -80,10 +80,6 @@ let store = {
     },
 
 }
-
-
-
-
 
 export default store;
 window.store = store;
