@@ -13,25 +13,27 @@ class App extends React.Component {
     render = () => {
         //debugger;
         return (
-            <BrowserRouter>
+
                 <div className='app_wrapper'>
                     <Header/>
                     <NavBar/>
                     <div className='content_wrapper'>
                         <Route path='/profile' render={() => <Profile state={this.props.state.profilePage}
                                                                       stateCommon={this.props.state.commonElements}
-                                                                      addPost={this.props.addPost}
-                                                                      updatePost={this.props.updatePost}/>}/>
+                                                                      //addPost={this.props.addPost}
+                                                                      //updatePost={this.props.updatePost}
+                                                                      dispatch = {this.props.dispatch}/>}/>
                         <Route path='/dialogs' render={() => <Dialogs state={this.props.state.dialogsPage}
                                                                       stateCommon={this.props.state.commonElements}
-                                                                      addDialog={this.props.addDialog}
-                                                                      updateComment={this.props.updateComment}/>}/>
+                                                                      //addDialog={this.props.addDialog}
+                                                                      //updateComment={this.props.updateComment}
+                                                                      dispatch={this.props.dispatch}/>}/>
                         {/*<Route path='/news' component={Profile} />*/}
                         {/*<Route path='/music' component={Profile}/>*/}
                         {/*<Route path='/settings' component={Profile}/>*/}
                     </div>
                 </div>
-            </BrowserRouter>
+
         );
     }
 }

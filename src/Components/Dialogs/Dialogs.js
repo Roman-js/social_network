@@ -3,6 +3,8 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import PropTypes from 'prop-types';
+import {addDialogActionCreator, updateDialogActionCreator} from "../../Redux/dialogs-reducer";
+
 
 
 const Dialogs = (props) => {
@@ -14,14 +16,14 @@ const Dialogs = (props) => {
         message => <MessageItem text={message.text}/>)
 
     let message = React.createRef();
-    let addComment = () =>{
+    let addDialog = () =>{
         let text = message.current.value;
-        props.addDialog(text);
+        props.dispatch(addDialogActionCreator());
     };
 
-    let currentComment = () =>{
+    let currentDialog = () =>{
         let text = message.current.value;
-        props.updateComment(text);
+        props.dispatch(updateDialogActionCreator(text));
     }
     return (
         <div className={classes.dialogItems}>
@@ -30,10 +32,10 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.messages}>
                 <div>
-                    <textarea onChange={currentComment} ref={ message }></textarea>
+                    <textarea onChange={currentDialog} ref={ message }></textarea>
                 </div>
                 <div>
-                    <button onClick={ addComment }>Add comment</button>
+                    <button onClick={ addDialog }>Add comment</button>
                 </div>
                 {messageElements}
             </div>

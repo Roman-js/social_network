@@ -4,14 +4,19 @@ import store from "./Redux/state";
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter} from "react-router-dom";
 
 
  let rerenderEntireTree = (state) => {
-    ReactDOM.render(<App state={state}
-                         addDialog={store.addDialog.bind(store)}
-                         addPost={store.addPost.bind(store)}
-                         updateComment={store.updateComment.bind(store)}
-                         updatePost={store.updatePost.bind(store)}/>, document.getElementById('root'));
+    ReactDOM.render(
+        <BrowserRouter>
+            <App state={state}
+                         dispatch = {store.dispatch.bind(store)}
+                         //addDialog={store.addDialog.bind(store)}
+                         //updateComment={store.updateComment.bind(store)}
+                         //addPost={store.addPost.bind(store)}
+                        // updatePost={store.updatePost.bind(store)}
+    /> </BrowserRouter>, document.getElementById('root'));
 }
 
 rerenderEntireTree(store.getState());

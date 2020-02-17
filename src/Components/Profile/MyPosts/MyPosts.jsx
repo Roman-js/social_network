@@ -2,6 +2,10 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import PropTypes from 'prop-types';
+import {addPostActionCreator, updatePostActionCreator} from "../../../Redux/profile-reducer";
+
+
+
 
 
 const MyPosts = (props) => {
@@ -11,14 +15,15 @@ const MyPosts = (props) => {
 
 
 
-    let addPost = (e) => {
-        let text = e.currentTarget.value;
-        props.addPost(text);
+    let addPost = () => {
+        //props.dispatch({type:'ADD-POST'});
+        props.dispatch(addPostActionCreator())//
     };
 
     let updatePost = (e) =>{
         let text = e.currentTarget.value;
-        props.updatePost(text);
+        //props.dispatch({type: 'UPDATE-POST',currentPost: text});
+        props.dispatch(updatePostActionCreator(text))
     };
 
 

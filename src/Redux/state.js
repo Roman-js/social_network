@@ -1,4 +1,6 @@
 import React from "react";
+import profileReducer from "./profile-reducer";
+import dialogReducer from "./dialogs-reducer";
 
 
 let store = {
@@ -42,38 +44,46 @@ let store = {
     getState(){
         return this._state
     },
-    rerenderEntireTree () {
-    console.log('State changed');
-    },
+    // rerenderEntireTree (){
+    //      return alert('ddd');
+    // },
 
-     addDialog ()  {
-        let newDialog = {id: 4, text: this._state.dialogsPage.newPostText};
-        this._state.dialogsPage.messages.push(newDialog);
-        this.rerenderEntireTree(this._state);
-    },
-     updateComment (currentDialog) {
-        this._state.dialogsPage.newPostText = currentDialog;
-        this.rerenderEntireTree(this._state);
-    },
+    dispatch(action){
 
-     addPost (postMessage) {
-        let newPost = {id: 4, message: this._state.profilePage.newPostText, likes: 0};
-        let copyPosts = [...this._state.profilePage.posts, newPost];
-        this._state.profilePage.posts.push(newPost)
-         //this._state.profilePage.posts: newPost;
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
         this.rerenderEntireTree(this._state);
-    },
 
-     updatePost (currentPost) {
-        this._state.profilePage.newPostText = currentPost;
-        this.rerenderEntireTree(this._state);
-    },
+    //      if(action.type === 'ADD-DIALOG'){
+    //          let newDialog = {id: 4, text: this._state.dialogsPage.newPostText};
+    //          this._state.dialogsPage.messages.push(newDialog);
+    //          this.rerenderEntireTree(this._state);
+    //      }
+    //      else if (action.type === 'UPDATE-DIALOG'){
+    //          this._state.dialogsPage.newPostText = action.currentDialog;
+    //          this.rerenderEntireTree(this._state);
+    //      }
+    //      else if (action.type === 'ADD-POST'){
+    //          let newPost = {id: 4, message: this._state.profilePage.newPostText, likes: 0};
+    //          let copyPosts = [...this._state.profilePage.posts, newPost];
+    //          this._state.profilePage.posts.push(newPost)
+    //          this.rerenderEntireTree(this._state);
+    //      }
+    //      else if (action.type === 'UPDATE-POST'){
+    //          this._state.profilePage.newPostText = action.currentPost;
+    //
+    //      }
+     },
 
       subscribe (observer) {
         this.rerenderEntireTree = observer
     },
 
 }
+
+
+
+
 
 export default store;
 window.store = store;

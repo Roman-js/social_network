@@ -14,7 +14,8 @@ const Profile = (props) => {
             <MyPosts state={props.state.posts}
                      stateCommon={props.stateCommon.avatars}
                      addPost={props.addPost}
-                     updatePost={props.updatePost}/>
+                     updatePost={props.updatePost}
+                     dispatch = {props.dispatch}/>
         </div>
 
     )
