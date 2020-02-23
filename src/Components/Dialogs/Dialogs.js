@@ -9,21 +9,20 @@ import {addDialogActionCreator, updateDialogActionCreator} from "../../Redux/dia
 
 const Dialogs = (props) => {
 
-//debugger;
-    let nameElements = props.state.names.map(name =>
-        <DialogItem name={name.name} id={name.id} avatar={props.stateCommon.avatars[0]}/>)
-    let messageElements = props.state.messages.map(
+    let nameElements = props.store.names.map(name =>
+        <DialogItem name={name.name} id={name.id} avatar={props.store.avatars[0].avatar} />)
+    let messageElements = props.store.messages.map(
         message => <MessageItem text={message.text}/>)
 
-    let message = React.createRef();
+
     let addDialog = () =>{
-        let text = message.current.value;
-        props.dispatch(addDialogActionCreator());
+        props.onAddDialog();
     };
 
-    let currentDialog = () =>{
-        let text = message.current.value;
-        props.dispatch(updateDialogActionCreator(text));
+    let currentDialog = (e) =>{
+        let text = e.currentTarget.value;
+        props.currentDialogText(text);
+        //props.dispatch(updateDialogActionCreator(text));
     }
     return (
         <div className={classes.dialogItems}>
@@ -32,7 +31,7 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.messages}>
                 <div>
-                    <textarea onChange={currentDialog} ref={ message }></textarea>
+                    <textarea onChange={currentDialog} ></textarea>
                 </div>
                 <div>
                     <button onClick={ addDialog }>Add comment</button>

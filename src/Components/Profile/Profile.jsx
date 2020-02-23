@@ -3,6 +3,7 @@ import classes from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PropTypes from "prop-types";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 const Profile = (props) => {
@@ -11,11 +12,9 @@ const Profile = (props) => {
 
         <div className={classes.profileItems}>
             <ProfileInfo/>
-            <MyPosts state={props.state.posts}
-                     stateCommon={props.stateCommon.avatars}
-                     addPost={props.addPost}
-                     updatePost={props.updatePost}
-                     dispatch = {props.dispatch}/>
+            <MyPostsContainer store={props.store}
+                     //dispatch = {props.dispatch}
+            />
         </div>
 
     )

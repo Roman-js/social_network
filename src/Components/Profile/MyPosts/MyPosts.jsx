@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import PropTypes from 'prop-types';
-import {addPostActionCreator, updatePostActionCreator} from "../../../Redux/profile-reducer";
+
 
 
 
@@ -10,20 +10,19 @@ import {addPostActionCreator, updatePostActionCreator} from "../../../Redux/prof
 
 const MyPosts = (props) => {
 //debugger;
-    let postElements = props.state.map(state => <Post message={state.message} likes={state.likes}
-                                                      avatar={props.stateCommon[0]}/>);
+    let postElements = props.store.map(store => <Post message={store.message} likes={store.likes}
+                                                       avatar={store.avatar}
+        /> );
 
 
 
     let addPost = () => {
-        //props.dispatch({type:'ADD-POST'});
-        props.dispatch(addPostActionCreator())//
+      props.onAddPost();
     };
 
     let updatePost = (e) =>{
         let text = e.currentTarget.value;
-        //props.dispatch({type: 'UPDATE-POST',currentPost: text});
-        props.dispatch(updatePostActionCreator(text))
+        props.onUpdatePost(text);
     };
 
 

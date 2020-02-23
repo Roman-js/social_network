@@ -12,7 +12,7 @@ const DialogItem = (props) => {
 
             <div className={classes.name}><NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink></div>
             <div className={classes.avatar}>
-                {props.avatar.avatar}
+                {props.avatar}
 
             </div>
         </div>
