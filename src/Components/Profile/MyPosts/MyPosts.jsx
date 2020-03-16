@@ -4,35 +4,24 @@ import Post from "./Post/Post";
 import PropTypes from 'prop-types';
 
 
-
-
-
-
 const MyPosts = (props) => {
-//debugger;
-    let postElements = props.store.map(store => <Post message={store.message} likes={store.likes}
-                                                       avatar={store.avatar}
-        /> );
 
-
+    let postElements = props.store.map(store => <Post message={store.message}  key={Math.floor(Math.random()*100)} likes={store.likes} avatar={store.avatar}
+    />);
 
     let addPost = () => {
-      props.onAddPost();
+        props.onAddPost();
     };
-
-    let updatePost = (e) =>{
+    let updatePost = (e) => {
         let text = e.currentTarget.value;
         props.onUpdatePost(text);
     };
-
-
     return (
-
         <div className={classes.postItems}>
             <h3>New Post</h3>
             <div>
                 <div>
-                    <textarea onChange={updatePost} ></textarea>
+                    <textarea onChange={updatePost} value={props.newPostText}></textarea>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
@@ -43,8 +32,6 @@ const MyPosts = (props) => {
                 {postElements}
             </div>
         </div>
-
-
     );
 }
 

@@ -7,6 +7,7 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import PropTypes from 'prop-types';
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import UserContainer from "./Components/Users/UsersContainer";
 
 
 class App extends React.Component {
@@ -19,14 +20,9 @@ class App extends React.Component {
                 <Header/>
                 <NavBar/>
                 <div className='content_wrapper'>
-                    <Route path='/profile' render={() => <Profile store={this.props.store}
-                                                                  //dispatch={this.props.dispatch}
-                    />
-                    }/>
-                    <Route path='/dialogs' render={() => <DialogsContainer store={this.props.store}
-                                                                  //dispatch={this.props.dispatch}
-                    />
-                    }/>
+                    <Route path='/profile' render={() => <Profile />}/>
+                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                    <Route path='/users'   render={()=><UserContainer />}/>
                 </div>
             </div>
         );

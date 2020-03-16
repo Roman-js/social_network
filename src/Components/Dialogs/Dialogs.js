@@ -10,9 +10,9 @@ import {addDialogActionCreator, updateDialogActionCreator} from "../../Redux/dia
 const Dialogs = (props) => {
 
     let nameElements = props.store.names.map(name =>
-        <DialogItem name={name.name} id={name.id} avatar={props.store.avatars[0].avatar} />)
+        <DialogItem name={name.name} key={name.id} id={name.id} avatar={props.store.avatars[0].avatar} />)
     let messageElements = props.store.messages.map(
-        message => <MessageItem text={message.text}/>)
+        message => <MessageItem text={message.text} key={message.id}/>)
 
 
     let addDialog = () =>{
@@ -22,7 +22,6 @@ const Dialogs = (props) => {
     let currentDialog = (e) =>{
         let text = e.currentTarget.value;
         props.currentDialogText(text);
-        //props.dispatch(updateDialogActionCreator(text));
     }
     return (
         <div className={classes.dialogItems}>
@@ -31,7 +30,7 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.messages}>
                 <div>
-                    <textarea onChange={currentDialog} ></textarea>
+                    <textarea onChange={currentDialog} value={props.newPostText}></textarea>
                 </div>
                 <div>
                     <button onClick={ addDialog }>Add comment</button>
