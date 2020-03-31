@@ -9,7 +9,8 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) =>{
     return{
         store: state.dialogsPage,
-        newPostText: state.newPostText
+        newPostText: state.newPostText,
+        isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch) =>{

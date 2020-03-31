@@ -6,12 +6,12 @@ import PropTypes from "prop-types";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
-const Profile = (props) => {
-//debugger;
-    return (
 
+const Profile = (props) => {
+
+    return (
         <div className={classes.profileItems}>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
         </div>
 

@@ -1,7 +1,9 @@
 import React from "react";
+import {usersAPI} from "../API/api";
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_POST = 'UPDATE-POST'
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
 let initialState = {
     posts: [
@@ -12,6 +14,7 @@ let initialState = {
         }
     ],
     newPostText: '',
+    profile: null,
     avatars: [
         {id: 1, avatar: <img src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4FolXC6aeGZi91crpOff8py7yy45bcY6t2bPZhSK1U3kRsc5b' alt={'avatar'}/>}
     ]
@@ -27,20 +30,30 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: '',
                 posts: [...state.posts,
                 {id: Math.floor(Math.random()*100), message: body, likes: 0, avatar: avatar}]};
-            //stateCopy.posts.push(newPost);
-            //stateCopy.newPostText = '';
-            //return stateCopy;
+           
         }
         case UPDATE_POST:{
             return  {...state, newPostText: action.currentPost};
-               // stateCopy.newPostText = action.currentPost;
-            //return stateCopy;
-}
+        }
+        case SET_USER_PROFILE:{
+            return {...state, profile: action.profile}
+        }
         default: return state;
     }
 
 }
 export const addPostActionCreator = () =>({type: 'ADD-POST'})
 export const updatePostActionCreator = (text) =>({type: 'UPDATE-POST', currentPost: text})
+export const setUserProfile = (profile)=>({type: SET_USER_PROFILE, profile})
+
+export const getPageOfUserThunkCreator = (UserId)=>{
+    return(dispatch)=>{
+        usersAPI.pageOfUser(UserId)
+            .then(response => {
+                //debugger
+                dispatch(setUserProfile(response))
+            })
+    }
+}
 
 export  default  profileReducer;
